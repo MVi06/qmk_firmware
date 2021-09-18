@@ -518,18 +518,18 @@ void send_alt_code(uint16_t altcode)
 #endif
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-  if (IS_LAYER_ON(_AZERTY)) {
-    if (IS_LAYER_ON(_LOWER))  {
-      layer_on(_AZ_LOWER);
+  if (IS_LAYER_ON_STATE(state, _AZERTY)) {
+    if (IS_LAYER_ON_STATE(state, _LOWER))  {
+      state |= ((layer_state_t)1 << _AZ_LOWER);
     }
     else {
-      layer_off(_AZ_LOWER);
+      state &= ~((layer_state_t)1 << _AZ_LOWER);
     }
-    if (IS_LAYER_ON(_RAISE))  {
-      layer_on(_AZ_RAISE);
+    if (IS_LAYER_ON_STATE(state, _RAISE))  {
+      state |= ((layer_state_t)1 << _AZ_RAISE);
     }
     else {
-      layer_off(_AZ_RAISE);
+      state &= ~((layer_state_t)1 << _AZ_RAISE);
     }
   }
   state = update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
@@ -757,7 +757,7 @@ uint8_t muse_offset = 70;
 uint16_t muse_tempo = 50;
 
 
-void encoder_update(bool clockwise) {
+bool encoder_update_user(uint8_t index, bool clockwise) {
   if (muse_mode) {
     if (IS_LAYER_ON(_RAISE)) {
       if (clockwise) {
@@ -787,9 +787,10 @@ void encoder_update(bool clockwise) {
       #endif
     }
   }
+  return true;
 }
 
-void dip_switch_update_user(uint8_t index, bool active) {
+bool dip_switch_update_user(uint8_t index, bool active) {
     switch (index) {
         case 0: {
 #ifdef AUDIO_ENABLE
@@ -818,6 +819,7 @@ void dip_switch_update_user(uint8_t index, bool active) {
                 muse_mode = false;
             }
     }
+    return true;
 }
 
 void matrix_scan_user(void) {
