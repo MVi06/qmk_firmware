@@ -433,10 +433,6 @@ void render_status_secondary(void) {
 }
 
 void oled_task_user(void) {
-#ifndef SPLIT_KEYBOARD
-    else { oled_on(); }
-#endif
-
     if (is_keyboard_master()) {
       render_status_main();  // Renders the current keyboard state (layer, lock, caps, scroll, etc.)
     } else {
