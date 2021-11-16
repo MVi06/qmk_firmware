@@ -31,7 +31,7 @@ uint16_t mu_cced_timer = 0;
 // record states of modifiers before using unicode
 uint8_t mod_state;
 
-#ifdef OLED_DRIVER_ENABLE
+#ifdef OLED_ENABLE
 static uint32_t oled_timer = 0;
 #endif
 
@@ -207,7 +207,7 @@ void matrix_init_user(void) {
     #endif
 }
 
-#ifdef OLED_DRIVER_ENABLE
+#ifdef OLED_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) { return OLED_ROTATION_270; }
 
 void render_space(void) {
@@ -453,7 +453,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (record->event.pressed) {
-#ifdef OLED_DRIVER_ENABLE
+#ifdef OLED_ENABLE
         oled_timer = timer_read32();
 #endif
     // set_timelog();
