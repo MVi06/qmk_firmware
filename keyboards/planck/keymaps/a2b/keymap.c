@@ -63,7 +63,7 @@ enum planck_keycodes {
   ASFT_I,
   ASFT_S,
   // using alt+code, HX_XXXX enumeration muste be in exact same order
-  AL_ECRC, // must be the first in range
+  AL_ECIR, // must be the first in range
   AL_UECR,
   AL_UOE,
   AL_UAE,
@@ -76,10 +76,10 @@ enum planck_keycodes {
   AL_AE,
   AL_UGRV,
   AL_CPRT,
-  AL_APOS,
+  AL_QUOT,
   AL_TM,
-  AL_LGIL,
-  AL_RGIL,
+  AL_LDAQ,
+  AL_RDAQ,
   AL_R,
   AL_ELP,
   AL_DQUA,
@@ -152,7 +152,7 @@ enum planck_keycodes {
 
 // indexes for alt_codes, must be in exact same order as AL_XXXX keycodes
 enum windows_alt_codes_entries {
-  HX_ECRC=0,
+  HX_ECIR=0,
   HX_UECR,
   HX_UOE,
   HX_UAE,
@@ -165,10 +165,10 @@ enum windows_alt_codes_entries {
   HX_AE,
   HX_UGRV,
   HX_CPRT,
-  HX_APOS,
+  HX_QUOT,
   HX_TM,
-  HX_LGIL,
-  HX_RGIL,
+  HX_LDAQ,
+  HX_RDAQ,
   HX_R,
   HX_ELP,
   HX_DQUA,
@@ -187,7 +187,7 @@ enum windows_alt_codes_entries {
 };
 
 const uint16_t windows_alt_codes[] = {
-  [HX_ECRC] = 0x0234,
+  [HX_ECIR] = 0x0234,
   [HX_UECR] = 0x0202,
   [HX_UOE]  = 0x0140,
   [HX_UAE]  = 0x0198,
@@ -200,10 +200,10 @@ const uint16_t windows_alt_codes[] = {
   [HX_AE]   = 0x0230,
   [HX_UGRV] = 0x0249,
   [HX_CPRT] = 0x0169,
-  [HX_APOS] = 0x0146,
+  [HX_QUOT] = 0x0146,
   [HX_TM]   = 0x0153,
-  [HX_LGIL] = 0x0171,
-  [HX_RGIL] = 0x0187,
+  [HX_LDAQ] = 0x0171,
+  [HX_RDAQ] = 0x0187,
   [HX_R]    = 0x0174,
   [HX_ELP]  = 0x0133,
   [HX_DQUA] = 0x0150,
@@ -247,9 +247,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *`-----------------------------------------------------------------------------------------------------------'
  */
 [_BEPO] = LAYOUT_planck_grid(
-    BP_W,    BP_B,     BP_ECUT, BP_P,    BP_O,   BP_EGRV, BP_DCRC, BP_V,    BP_D,    BP_L,    BP_J,    KC_BSPC,
+    BP_W,    BP_B,     BP_EACU, BP_P,    BP_O,   BP_EGRV, BP_DCIR, BP_V,    BP_D,    BP_L,    BP_J,    KC_BSPC,
     BP_Z,    GUI_A,    ALT_U,   SFT_I,   CTRL_E, BP_COMM, BP_C,    CTRL_T,  SFT_S,   ALT_R,   GUI_N,   BP_M,
-    BP_ECRC, BP_AGRV,  BP_Y,    BP_X,    BP_DOT, BP_K,    BP_APOS, BP_Q,    BP_G,    BP_H,    BP_F,    MU_CCED,
+    BP_ECIR, BP_AGRV,  BP_Y,    BP_X,    BP_DOT, BP_K,    BP_QUOT, BP_Q,    BP_G,    BP_H,    BP_F,    MU_CCED,
     KC_LCTL, KC_LEFT,  KC_DOWN, KC_ALGR, LOWER,  TC_ENT,  TC_SPC,  RAISE,   KC_ALGR, KC_UP,   KC_RGHT, KC_ENT
 ),
 
@@ -267,7 +267,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_AZERTY] = LAYOUT_planck_grid(
     FR_W,    FR_B,     FR_EACU, FR_P,    FR_O,   FR_EGRV, FR_CIRC, FR_V,    FR_D,    FR_L,    FR_J,    KC_BSPC,
     FR_Z,    AGUI_A,   AALT_U,  ASFT_I,  ACTRL_E, FR_COMM, FR_C,   ACTRL_T, ASFT_S,  AALT_R,  AGUI_N,   FR_M,
-    AL_ECRC, FR_AGRV,  FR_Y,    FR_X,    FR_DOT, FR_K,    FR_APOS, FR_Q,    FR_G,    FR_H,    FR_F,    MU_CCED,
+    AL_ECIR, FR_AGRV,  FR_Y,    FR_X,    FR_DOT, FR_K,    FR_QUOT, FR_Q,    FR_G,    FR_H,    FR_F,    MU_CCED,
     SHIFT,   KC_LEFT,  KC_DOWN, ALTGR,   LOWER,  TC_ENT,  TC_SPC,  RAISE,   ALTGR,   KC_UP,   KC_RGHT, SHIFT
 ),
 
@@ -337,8 +337,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *`-----------------------------------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_planck_grid(
-    BP_DLR,  BP_DQOT, BP_LGIL, BP_RGIL, BP_LPRN, BP_RPRN, BP_AT,   BP_PLUS, BP_MINS, BP_SLSH, BP_ASTR, _______,
-    KC_ESC,  MVI_CXU, BP_LESS, BP_GRTR, BP_LBRC, BP_RBRC, KC_PSCR, BP_EQL,  _______, _______, KC_TAB,  MVI_MEN,
+    BP_DLR,  BP_DQUO, BP_LDAQ, BP_RDAQ, BP_LPRN, BP_RPRN, BP_AT,   BP_PLUS, BP_MINS, BP_SLSH, BP_ASTR, _______,
+    KC_ESC,  MVI_CXU, BP_LABK, BP_RABK, BP_LBRC, BP_RBRC, KC_PSCR, BP_EQL,  _______, _______, KC_TAB,  MVI_MEN,
     KC_CAPS, ALT_TAB, BP_LEQL, BP_GEQL, CTL_TAB, _______, MVI_CCC, BP_PERC, MVI_CUT, MVI_CPY, MVI_PST, KC_VOLD,
     _______, KC_HOME, KC_PGDN, _______, _______, _______, _______, _______, _______, KC_PGUP, KC_END,  _______
 ),
@@ -355,7 +355,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *`-----------------------------------------------------------------------------------------------------------'
  */
 [_AZ_LOWER] = LAYOUT_planck_grid(
-    FR_DLR,  FR_DQUO, AL_LGIL, AL_RGIL, FR_LPRN, FR_RPRN, FR_AT,   FR_PLUS, FR_MINS, FR_SLSH, FR_ASTR, _______,
+    FR_DLR,  FR_DQUO, AL_LDAQ, AL_RDAQ, FR_LPRN, FR_RPRN, FR_AT,   FR_PLUS, FR_MINS, FR_SLSH, FR_ASTR, _______,
     _______, _______, FR_LABK, FR_RABK, FR_LBRC, FR_RBRC, _______, FR_EQL,  _______, _______, _______, _______,
     _______, _______, UC_LEQL, UC_GEQL, _______, _______, _______, FR_PERC, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
@@ -393,7 +393,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_RAISE] = LAYOUT_planck_grid(
     BP_HASH, BP_1,    BP_2,   BP_3,    BP_4,    BP_5,    BP_6,    BP_7,    BP_8,    BP_9,    BP_0,    _______,
-    KC_ESC,  KC_F1,   KC_F2,  KC_F3,   KC_F4,   KC_F5,   KC_F6,   BP_DEGR, CTL_TAB, ALT_TAB, KC_TAB,  MVI_MEN,
+    KC_ESC,  KC_F1,   KC_F2,  KC_F3,   KC_F4,   KC_F5,   KC_F6,   BP_DEG, CTL_TAB, ALT_TAB, KC_TAB,  MVI_MEN,
     KC_CAPS, KC_F7,   KC_F8,  KC_F9,   KC_F10,  KC_F11,  KC_F12,  BP_GRV,  XCV_CUT, XCV_CPY, XCV_PST, KC_VOLU,
     _______, KC_MUTE, KC_INS, _______, _______, _______, _______, _______, _______, KC_PSCR, KC_DEL,  _______
 ),
@@ -645,9 +645,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return false;
     break;
-  case AL_ECRC ... AL_CRC: // character rendered using alt-code on windows
+  case AL_ECIR ... AL_CRC: // character rendered using alt-code on windows
     if (record->event.pressed) {
-      send_alt_code(windows_alt_codes[keycode-AL_ECRC]);
+      send_alt_code(windows_alt_codes[keycode-AL_ECIR]);
     }
     return false;
     break;

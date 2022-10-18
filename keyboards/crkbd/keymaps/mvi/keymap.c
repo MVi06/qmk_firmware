@@ -106,11 +106,11 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BEPO] = LAYOUT(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-     BP_W,    BP_B,    BP_ECUT, BP_P,    BP_O,    BP_EGRV,                      BP_DCRC, BP_V,    BP_D,    BP_L,    BP_J,    KC_BSPC,
+     BP_W,    BP_B,    BP_EACU, BP_P,    BP_O,    BP_EGRV,                      BP_DCIR, BP_V,    BP_D,    BP_L,    BP_J,    KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
      BP_Z,    GUI_A,   ALT_U,   SFT_I,   CTR_E,   BP_COMM,                      BP_C,    CTR_T,   SFT_S,   ALT_R,   GUI_N,   BP_M,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     BP_ECRC, BP_AGRV, BP_Y,    BP_X,    BP_DOT,  BP_K,                         BP_APOS, BP_Q,    BP_G,    BP_H,    BP_F,    MU_CCED,
+     BP_ECIR, BP_AGRV, BP_Y,    BP_X,    BP_DOT,  BP_K,                         BP_QUOT, BP_Q,    BP_G,    BP_H,    BP_F,    MU_CCED,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                          KC_ALGR, LOWER,   TC_ENT,     TC_SPC,  RAISE,   KC_ALGR
                                       //`--------------------------'  `--------------------------'
@@ -130,9 +130,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   
   [_LOWER] = LAYOUT(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-     BP_DLR,  BP_DQOT, BP_LGIL, BP_RGIL, BP_LPRN, BP_RPRN,                      BP_AT,   BP_PLUS, BP_MINS, BP_SLSH, BP_ASTR, _______,
+     BP_DLR,  BP_DQUO, BP_LDAQ, BP_RDAQ, BP_LPRN, BP_RPRN,                      BP_AT,   BP_PLUS, BP_MINS, BP_SLSH, BP_ASTR, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     KC_ESC,  MVI_CXU, BP_LESS, BP_GRTR, BP_LBRC, BP_RBRC,                      KC_PSCR, BP_EQL,  _______, _______, KC_TAB,  MVI_MEN,
+     KC_ESC,  MVI_CXU, BP_LABK, BP_RABK, BP_LBRC, BP_RBRC,                      KC_PSCR, BP_EQL,  _______, _______, KC_TAB,  MVI_MEN,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
      KC_CAPS, ALT_TAB, BP_LEQL, BP_GEQL, CTL_TAB, _______,                      MVI_CCC, BP_PERC, MVI_CUT, MVI_CPY, MVI_PST, KC_VOLD,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -144,7 +144,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
      BP_HASH, BP_1,    BP_2,    BP_3,    BP_4,    BP_5,                         BP_6,    BP_7,    BP_8,    BP_9,    BP_0,    _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                        KC_F6,   BP_DEGR, CTL_TAB, ALT_TAB, KC_TAB,  MVI_MEN,
+     KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                        KC_F6,   BP_DEG,  CTL_TAB, ALT_TAB, KC_TAB,  MVI_MEN,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
      KC_CAPS, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,                       KC_F12,  BP_GRV,  XCV_CUT, XCV_CPY, XCV_PST, KC_VOLU,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -432,12 +432,13 @@ void render_status_secondary(void) {
     render_mod_status_shift_ctrl(get_mods()|get_oneshot_mods());
 }
 
-void oled_task_user(void) {
+bool oled_task_user(void) {
     if (is_keyboard_master()) {
       render_status_main();  // Renders the current keyboard state (layer, lock, caps, scroll, etc.)
     } else {
       render_status_secondary();
     }
+    return false;
 }
 
 #endif

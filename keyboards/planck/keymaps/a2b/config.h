@@ -16,9 +16,6 @@
 
 #pragma once
 
-#define NO_ACTION_MACRO
-#define NO_ACTION_FUNCTION
-
 // Configure the global tapping term (default: 200ms)
 #define TAPPING_TERM 300
 

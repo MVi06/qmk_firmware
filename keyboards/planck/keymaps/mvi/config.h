@@ -16,9 +16,6 @@
 
 #pragma once
 
-//#define NO_ACTION_MACRO
-//#define NO_ACTION_FUNCTION
-
 //#undef FORCE_NKRO
 #define FORCE_NKRO
 
